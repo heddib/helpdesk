@@ -20,6 +20,11 @@ services:
     command: bash /workspace/init.sh
     environment:
       - 'SHELL=/bin/bash'
+      - 'MYSQL_ROOT_PASSWORD=${SERVICE_PASSWORD_ROOT}'
+      - 'ADMIN_PASSWORD=${SERVICE_PASSWORD_FRAPPE}'
+      - 'SITE_NAME=${FRAPPE_VERSION:site.localhost}'
+      - 'EMAIL=${FRAPPE_VERSION:-admin@example.test}'
+      - 'FRAPPE_VERSION=${FRAPPE_VERSION:-version-15}'
     working_dir: /home/frappe
     exposes:
       - 8000
