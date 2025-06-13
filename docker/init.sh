@@ -8,7 +8,7 @@ else
     echo "Creating new bench..."
 fi
 
-bench init --skip-redis-config-generation frappe-bench --version version-15
+bench init --skip-redis-config-generation frappe-bench --version ${FRAPPE_VERSION:-version-15}
 
 cd frappe-bench
 
@@ -24,11 +24,12 @@ sed -i '/watch/d' ./Procfile
 
 bench get-app helpdesk --branch main
 
-bench new-site helpdesk.localhost \
---force \
---mariadb-root-password 123 \
---admin-password admin \
---no-mariadb-socket
+bench new-site ${SITE_NAME} \
+    --force \
+    --mariadb-root-password ${MYSQL_ROOT_PASSWORD} \
+    --admin-password ${ADMIN_PASSWORD} \
+    --email ${EMAIL} \
+    --no-mariadb-socket
 
 bench --site helpdesk.localhost install-app helpdesk
 bench --site helpdesk.localhost set-config developer_mode 1
