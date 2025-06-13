@@ -1,4 +1,3 @@
-version: "3.7"
 services:
   mariadb:
     image: 'mariadb:10.8'
@@ -28,6 +27,4 @@ services:
       - '9000'
     volumes:
       - './workspace:/workspace'
-      
-volumes:
-  mariadb-data:
+      - 'bench-data:/home/frappe/frappe-bench'
