@@ -30,11 +30,11 @@ bench new-site ${SITE_NAME} \
     --admin-password ${ADMIN_PASSWORD} \
     --no-mariadb-socket
 
-bench --site helpdesk.localhost install-app helpdesk
-bench --site helpdesk.localhost set-config developer_mode 1
-bench --site helpdesk.localhost set-config mute_emails 1
-bench --site helpdesk.localhost set-config server_script_enabled 1
-bench --site helpdesk.localhost clear-cache
-bench use helpdesk.localhost
+bench --site ${SITE_NAME} install-app helpdesk
+#bench --site ${SITE_NAME} set-config developer_mode 1
+#bench --site ${SITE_NAME} set-config mute_emails 1
+#bench --site ${SITE_NAME} set-config server_script_enabled 1
+#bench --site ${SITE_NAME} clear-cache
+bench use ${SITE_NAME}
 
 bench start
