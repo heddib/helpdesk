@@ -28,7 +28,6 @@ bench new-site ${SITE_NAME} \
     --force \
     --mariadb-root-password ${MYSQL_ROOT_PASSWORD} \
     --admin-password ${ADMIN_PASSWORD} \
-    --email ${EMAIL} \
     --no-mariadb-socket
 
 bench --site helpdesk.localhost install-app helpdesk
