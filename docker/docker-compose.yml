@@ -21,7 +21,6 @@ services:
       - 'MYSQL_ROOT_PASSWORD=${SERVICE_PASSWORD_ROOT}'
       - 'ADMIN_PASSWORD=${SERVICE_PASSWORD_FRAPPE}'
       - 'SITE_NAME=${SITE_NAME:-site.localhost}'
-      - 'EMAIL=${EMAIL:-admin@example.test}'
       - 'FRAPPE_VERSION=${FRAPPE_VERSION:-version-15}'
     working_dir: /home/frappe
     expose:
