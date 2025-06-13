@@ -1,29 +1,27 @@
 version: "3.7"
 services:
   mariadb:
-    image: mariadb:10.8
+    image: 'mariadb:10.8'
     command:
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
-      - --skip-character-set-client-handshake
-      - --skip-innodb-read-only-compressed # Temporary fix for MariaDB 10.6
+      - '--character-set-server=utf8mb4'
+      - '--collation-server=utf8mb4_unicode_ci'
+      - '--skip-character-set-client-handshake'
+      - '--skip-innodb-read-only-compressed'
     environment:
       - 'MYSQL_ROOT_PASSWORD=${SERVICE_PASSWORD_ROOT}'
     volumes:
       - 'mariadb-data:/var/lib/mysql'
-
   redis:
-    image: redis:alpine
-
+    image: 'redis:alpine'
   frappe:
-    image: frappe/bench:latest
-    command: bash /workspace/init.sh
+    image: 'frappe/bench:latest'
+    command: 'bash /workspace/init.sh'
     environment:
-      - 'SHELL=/bin/bash'
+      - SHELL=/bin/bash
       - 'MYSQL_ROOT_PASSWORD=${SERVICE_PASSWORD_ROOT}'
       - 'ADMIN_PASSWORD=${SERVICE_PASSWORD_FRAPPE}'
-      - 'SITE_NAME=${FRAPPE_VERSION:site.localhost}'
-      - 'EMAIL=${FRAPPE_VERSION:-admin@example.test}'
+      - 'SITE_NAME=${SITE_NAME:-site.localhost}'
+      - 'EMAIL=${EMAIL:-admin@example.test}'
       - 'FRAPPE_VERSION=${FRAPPE_VERSION:-version-15}'
     working_dir: /home/frappe
     exposes:
@@ -31,6 +29,6 @@ services:
       - 9000
     volumes:
       - './workspace:/workspace'
-
+      
 volumes:
   mariadb-data:
