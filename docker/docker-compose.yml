@@ -27,4 +27,4 @@ services:
       - '9000'
     volumes:
       - './workspace:/workspace'
-      - 'bench-data:/home/frappe/frappe-bench'
+      - './frappe:/home/frappe
