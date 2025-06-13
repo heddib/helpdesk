@@ -20,7 +20,6 @@ services:
     command: bash /workspace/init.sh
     environment:
       - 'SHELL=/bin/bash'
-      - SERVICE_FQDN_FRAPPE_8000
     working_dir: /home/frappe
     volumes:
       - '.:/workspace'
