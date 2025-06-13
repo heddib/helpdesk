@@ -3,6 +3,7 @@
 if [ -d "/home/frappe/frappe-bench/apps/frappe" ]; then
     echo "Bench already exists, skipping init"
     cd frappe-bench
+    bench build --app helpdesk
     bench start
 else
     echo "Creating new bench..."
@@ -36,5 +37,6 @@ bench --site ${SITE_NAME} install-app helpdesk
 bench --site ${SITE_NAME} set-config server_script_enabled 1
 bench --site ${SITE_NAME} clear-cache
 bench use ${SITE_NAME}
+bench build --app helpdesk
 
 bench start
